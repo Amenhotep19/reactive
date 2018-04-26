@@ -187,33 +187,38 @@ Object.defineProperty(nested ? wrapper : reactive, prop, {
 #### Intercepting Get & Set for computed properties
 +++
 ```javascript
-//Computed properties gets their own watchers! 
-  for (let prop in computed) {
-    computedWatchers[prop] = new Watcher('Computed watcher prop: ' + prop, function() {
-      computedDeps[prop].notify()
-    }, null)
-  }
+function initComputed(reactive, computed) {
+  let computedWatchers = {}
+  let computedDeps = {}
   //Reactive computed props
   for (let prop in computed) {
+    let cachedValue = null
+    //Computed properties gets their own watchers which recompute the fn and notify its dependents
+    computedWatchers[prop] = new Watcher('Computed watcher prop: ' + prop, function () {
+      cachedValue = computed[prop].apply(reactive)
+      computedDeps[prop].notify()
+    }, null)
+
+    Dep.target = computedWatchers[prop]
+    cachedValue = computed[prop].apply(reactive)
+    Dep.target = null
+
     computedDeps[prop] = new Dep(prop)
     Object.defineProperty(reactive, prop, {
-      get: function() {
+      get: function () {
         if (Dep.target) {
           computedDeps[prop].depend(Dep.target)
           Dep.target = null
         }
-        Dep.target = computedWatchers[prop]
-        let val = computed[prop].apply(this)
-        Dep.target = null
-        return val
+        return cachedValue
       }
     })
+  }
 }
 ```
-@[1-6](Create watchers for each computed prop)
-@[7-9](For each computed prop, create a dependency tracker object)
-@[10-15](For each computed prop, add a subscriber to its subscribers list, when there is an active target set)
-@[16-22](For each computed prop, register its watcher as the active target, and apply the computed fn)
+@[1-12](Create watchers for each computed prop which recompute the fn and notify its dependents)
+@[13-15](Attach the watcher to the active target, and access the fn)
+@[17-28](For each computed prop, add a subscriber to its subscribers list, when there is an active target set)
 
 ---
  

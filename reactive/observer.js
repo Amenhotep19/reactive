@@ -49,23 +49,29 @@ const makeReactive = function (vm, propValueHash, parent) {
   initProps(reactive, props, propValueHash, parent)
 
   initTemplates(reactive, templates)
-  
+
   initComponents(reactive, components)
-  
+
   return reactive
 }
 
 function initComputed(reactive, computed) {
   let computedWatchers = {}
   let computedDeps = {}
-  //Computed properties gets their own watchers! 
-  for (let prop in computed) {
-    computedWatchers[prop] = new Watcher('Computed watcher prop: ' + prop, function () {
-      computedDeps[prop].notify()
-    }, null)
-  }
+
   //Reactive computed props
   for (let prop in computed) {
+    let cachedValue = null
+    //Computed properties gets their own watchers which recompute the fn and notify its dependents
+    computedWatchers[prop] = new Watcher('Computed watcher prop: ' + prop, function () {
+      cachedValue = computed[prop].apply(reactive)
+      computedDeps[prop].notify()
+    }, null)
+
+    Dep.target = computedWatchers[prop]
+    cachedValue = computed[prop].apply(reactive)
+    Dep.target = null
+
     computedDeps[prop] = new Dep(prop)
     Object.defineProperty(reactive, prop, {
       get: function () {
@@ -73,10 +79,7 @@ function initComputed(reactive, computed) {
           computedDeps[prop].depend(Dep.target)
           Dep.target = null
         }
-        Dep.target = computedWatchers[prop]
-        let val = computed[prop].apply(this)
-        Dep.target = null
-        return val
+        return cachedValue
       }
     })
   }
