@@ -181,7 +181,7 @@ Object.defineProperty(nested ? wrapper : reactive, prop, {
 > These properties are derived/computed from other properties. Example: b = a * 5. Here b is dependent on a.
 ---
 #### Computed Watchers
-> Every computed property gets its own watcher, which fires a notification to all its subscribers that its value has changed
+> Every computed property gets its own watcher, which recomputes and fires a notification to all its subscribers that its value has changed
 ---
 
 #### Intercepting Get & Set for computed properties
