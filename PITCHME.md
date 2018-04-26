@@ -231,6 +231,7 @@ Object.defineProperty(nested ? wrapper : reactive, prop, {
 - [Reactivity in Front-End JS Frameworks](https://www.youtube.com/watch?v=r4pNEdIt_l4&t=914s)
 - [Vue.js reactivity from scratch](https://dev.to/koehr/vuejs-reactivity-from-scratch)
 - [Vue.js internals computed properties](https://skyronic.com/blog/vuejs-internals-computed-properties)
+- [Front-End-Masters Advanced Vue Course](https://frontendmasters.com/courses/advanced-vue/introducing-reactivity/)
 ---
 #### Thank you :)
 Contact - araj@shipbob.com, jbuss@shipbob.com
