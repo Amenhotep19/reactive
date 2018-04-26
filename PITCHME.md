@@ -133,7 +133,7 @@ Dep.target = null
 
 #### What is an active target?
 Active target is basically an object which assigns itself a ‘Watcher’.
-A ‘Watcher’ is an object that accepts the update callback function (i.e. either the render fn or the computed fn callback), and runs it when its notify fn is executed
+A ‘Watcher’ is an object that accepts the update callback function (i.e. either the render fn or the computed fn callback), and runs it when its update fn is executed
 
 ---
 
