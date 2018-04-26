@@ -35,9 +35,9 @@ By ShipBob (Abhishek Raj, Jason Buss)
 
 ---
 
-#### What causes a change in JS
+#### What causes a change in a JS data model
 
-Anything asynchronous in nature causes change in JavaScript.
+Anything asynchronous in nature causes change in a JavaScript data model.
 Example:
 - Event listeners
 - Timeouts
