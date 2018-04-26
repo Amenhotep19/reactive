@@ -7,8 +7,8 @@ By ShipBob (Abhishek Raj, Jason Buss)
 ---
 
 #### Intro
-<img src="abhi.jpg" width="300" height="300" style="margin-right:50px;"/>
-<img src="jason.jpg" width="300" height="300"/>
+<img src="assets/abhi.jpg" width="300" height="300" style="margin-right:50px;"/>
+<img src="assets/jason.jpg" width="300" height="300"/>
 <p style="font-size:20px;float:left;margin-left:133px;">Abhi, Software Engineer at ShipBob</p>
 <p style="font-size:20px;float:left;margin-left:50px;">Jason, Javascript Engineer at ShipBob</p>
 ---
@@ -88,7 +88,7 @@ Example of Dependencies -  Data Binding element, Computed properties
 ---
 
 #### Dependency Chart
-![Dependency Chart](DependencyTracker.png)
+![Dependency Chart](assets/DependencyTracker.png)
 
 ---
 
