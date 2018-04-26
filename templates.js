@@ -24,7 +24,6 @@ let templateForA = function() {
     return `<p>Hello, I am a <i>nested data</i> prop. You can call me <strong>G</strong>(Width): ${this.e.g}</p>`
   }
   
-  
   let templateForH = function() {
     return `<p>Hello, I am a <i>nested computed</i> prop. You can call me <strong>H</strong>(Area): ${this.nestedComputed}</p>`
   }

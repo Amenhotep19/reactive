@@ -33,15 +33,18 @@ const initData = function (obj, reactive, nested) {
 }
 
 const makeReactive = function (vm, propValueHash, parent) {
-  let reactive = {}
-  reactive.render = render
-  reactive.bindPropToTemplate = bindPropToTemplate
   const computed = vm.computed
   const templates = vm.templates
   const props = vm.props || []
   const components = vm.components || []
   const data = (vm.data && vm.data()) || {}
+  let reactive = {}
 
+  reactive.render = render
+  reactive.bindPropToTemplate = bindPropToTemplate
+  reactive.name = vm.name
+  reactive.el = vm.el
+  
   initData(data, reactive)
 
   initComputed(reactive, computed)
@@ -102,7 +105,7 @@ function initProps(reactive, props, propValueHash, parent) {
 function initTemplates(reactive, templates) {
   for (let template of templates) {
     reactive.bindPropToTemplate(template.html, template.id, template.prop)
-    reactive.render(template.html, template.id)
+    reactive.render(template.html, template.id, reactive.el)
   }
 }
 

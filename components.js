@@ -2,6 +2,7 @@
 import temp from './templates.js'
 const childComponent = {
     name: 'childComponent',
+    el: 'childComponent',
     props: ['a1'],
     data() {
       return {
@@ -47,7 +48,7 @@ const childComponent = {
         return this.e.f * this.e.g
       }
     },
-    el: 'appRoot',
+    el: 'componentOne',
     templates: [{
         html: temp.templateForA,
         id: "a",
