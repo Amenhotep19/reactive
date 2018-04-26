@@ -9,7 +9,20 @@ const traverseToProp = (target, props) => {
     }
     return o
   }
+ // Logger to log dependency notifications
+  const logger = {
+    info (msg) {
+      let noLogs = document.getElementById('noLogs')
+      if(noLogs && noLogs.innerText !== '') {
+        noLogs.innerText = ''
+      }
+      let p = document.createElement('p')
+      p.id = 'logText'
+      p.innerText = msg
+      document.getElementById('logs').appendChild(p)
+    }
+  }
   
-  export {traverseToProp}
+  export {traverseToProp, logger}
  
   

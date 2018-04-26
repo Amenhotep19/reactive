@@ -16,6 +16,7 @@ export const render = function (template, id, componentId) {
         componentRoot.appendChild(el)
         highlight('initProps', el, 1000)
     } else {
+      el.innerHTML = template.apply(this)
       highlight('activeProps', el, 3000)
     }
 }

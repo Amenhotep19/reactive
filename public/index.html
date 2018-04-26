@@ -8,9 +8,17 @@
       .initProps {
          background-color: lightblue;
       }
+      #logText{
+        color:indigo;
+      }
+      #logs{
+        border-style: solid;
+        border-color: gray;
+      }
     </style>
 </head>
 <body>
+    <div id="left" style="float:left">
     <div id="componentOne">
      <div id="childComponent"></div>
     </div>
@@ -34,6 +42,13 @@
     </label>
     <input id="inputG" type="text" />
     </div>
+</div>
+<div style="float:right">
+<button id="clearLogs">Clear logs</button>
+</div>
+<div id="logs" style="float:right;margin-right:50px;padding:10px;">
+ <h3>Dependency Tracker</h3>
+</div>
 <script src="bundle.js"></script>
 </body>
 

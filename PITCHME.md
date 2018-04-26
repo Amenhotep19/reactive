@@ -106,29 +106,25 @@ We can have a global dependency tracker object which maintains the active target
 ```javascript
 //Dependency Tracker, maintains a list of subscribers, and an active target (can only be one at any point in time)
 const Dep = function(name) {
-  this.subscribers = []
+  this.subscribers = new Set()
   this.depend = function(s) {
-    if (this.subscribers.find(v => v.id === s.id) === undefined) {
-      this.subscribers.push(s)
-    } else {
-      // console.log(s.id + ' has already subscribed for ' + this.id)
-    }
+      this.subscribers.add(s)
   }
   this.notify = function() {
-    this.subscribers.forEach((s) => {
-      console.log(this.name + ' notifying ' + s.name)
+    for (let s of this.subscribers){
+      logger.info(this.name + ' notifying ' + s.name)
       s.update()
-    })
+    }
   }
   this.id = globalDepTrackerCount++
   this.name = name
 }
 Dep.target = null
 ```
-@[1-2,19,20](Global Dependency Tracker which has an active target)
-@[17,18,3](It maintains a list of subscribers)
-@[4-10](Adds subscribers)
-@[11-16](Notifies subscribers)
+@[1-2,13-16](Global Dependency Tracker which has an active target)
+@[3](It maintains a list of subscribers)
+@[4-6](Adds subscribers)
+@[7-12](Notifies subscribers)
 ---
 
 #### What is an active target?
