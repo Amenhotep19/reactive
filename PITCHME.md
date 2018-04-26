@@ -2,7 +2,7 @@
 
 By ShipBob (Abhishek Raj, Jason Buss)
 
-<img src="assets/ShipBob%20Logomark%20Color.png" width="100" height="100" style="text-align:center"/>
+<img src="assets/ShipBob_Logomark_Color.png" width="100" height="100" style="text-align:center"/>
 
 ---
 
