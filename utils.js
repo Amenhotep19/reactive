@@ -22,7 +22,14 @@ const traverseToProp = (target, props) => {
       document.getElementById('logs').appendChild(p)
     }
   }
+
+  const addAndRemoveClass = (className, el, timeout) => {
+    el.classList.add(className)
+    setTimeout(() => {
+        el.classList.remove(className)
+    }, timeout)
+}
   
-  export {traverseToProp, logger}
+  export {traverseToProp, logger, addAndRemoveClass}
  
   
