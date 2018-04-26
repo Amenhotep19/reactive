@@ -222,7 +222,7 @@ function initComputed(reactive, computed) {
 
 ---
  
-[Live Demo](https://jsfiddle.net/abh7cr/9rpxm731/)
+[Live Demo](https://reactive-framework.firebaseapp.com/)
 
 ---
 
